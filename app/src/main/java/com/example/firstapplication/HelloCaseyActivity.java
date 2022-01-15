@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.MobileAds;
+
 public class HelloCaseyActivity extends AppCompatActivity {
     private TextView message;
     private int counter = 0;
@@ -14,6 +16,7 @@ public class HelloCaseyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this);
 
         message = findViewById(R.id.clickCounter);
         ImageView droid = findViewById(R.id.caseyImage);
