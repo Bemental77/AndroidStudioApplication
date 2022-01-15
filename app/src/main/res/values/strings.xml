@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirstApplication</string>
+    <string name="app_name">Casey Clicker</string>
     <string name="welcome_text">Hello, I am Casey!</string>
     <string name="AdMobBanner1">"ca-app-pub-5295502517756152/1324176065 "</string>
 </resources>
