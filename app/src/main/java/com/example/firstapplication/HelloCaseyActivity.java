@@ -6,7 +6,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class HelloCaseyActivity extends AppCompatActivity {
     private TextView message;
@@ -16,7 +21,17 @@ public class HelloCaseyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdView adView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+
 
         message = findViewById(R.id.clickCounter);
         ImageView droid = findViewById(R.id.caseyImage);
@@ -33,11 +48,7 @@ public class HelloCaseyActivity extends AppCompatActivity {
     private void tapCasey() {
         counter++;
         String countAsText;
-        /*
-         * In real applications you should not write switch like the one below.
-         * Use resource of type "Quantity strings (plurals)" instead.
-         * See https://developer.android.com/guide/topics/resources/string-resource#Plurals
-         */
+
         switch (counter) {
             case 1:
                 countAsText = "once";
